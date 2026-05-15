@@ -1,0 +1,37 @@
+:root {
+  --kunku-red: #8B0000; /* Deep Crimson / Vermillion */
+  --ivory: #FFFFF0; /* Classic Ivory */
+  --forest-green: #1B3022; /* Mango/Coconut leaves */
+  --gold-accent: #C5A028; /* Subdued Gold */
+  --text-main: #2C2C2C;
+  --bg-main: var(--ivory);
+  
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Montserrat", sans-serif;
+
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  color: var(--kunku-red);
+  font-weight: 600;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
