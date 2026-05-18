@@ -223,15 +223,11 @@ function App() {
           <CornerOrnament className="card-corner corner-br" />
           
           <div className="event-timeline">
-            <div className="section-header">
-              <Mandala className="small-mandala" />
-              <h2>मंगल सोहळे</h2>
-            </div>
             
             <div className="timeline-item">
               <div className="time-box">11:04 <span className="ampm">AM</span></div>
               <div className="event-name">मंगलाष्टके</div>
-              <p className="event-desc">शुभ मुहूर्तावर होणारा मंगल सोहळा</p>
+              <p className="event-desc">The sacred union at the auspicious Muhurt</p>
             </div>
 
             <div className="divider-ornament">
@@ -241,15 +237,15 @@ function App() {
             </div>
 
             <div className="timeline-item">
-              <div className="time-box">01:00 <span className="ampm">PM</span> पासून</div>
-              <div className="event-name">स्वागत समारंभ</div>
-              <p className="event-desc">प्रीतीभोजन आणि आनंद सोहळा</p>
+              <div className="time-box">01:00 <span className="ampm">PM</span> onwards</div>
+              <div className="event-name">Grand Reception</div>
+              <p className="event-desc">A celebratory feast & joyful gatherings</p>
             </div>
 
             <div className="venue-info">
-              <p className="venue-label">स्थळ</p>
-              <div className="venue-name">बेला बँक्वेट हॉल</div>
-              <p className="venue-address">मंगेशी, बी.पी. पेट्रोल पंपाशेजारी, फोंडा</p>
+              <p className="venue-label">The Venue</p>
+              <div className="venue-name">Bella Banquet Hall</div>
+              <p className="venue-address">Mangueshi, next to BP petrol pump, Ponda</p>
               
               <a 
                 href="https://maps.app.goo.gl/nKuhgxayfmnFMsvu7" 
@@ -261,7 +257,7 @@ function App() {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
                 </svg>
-                लोकेशन पहा
+                Get Directions
               </a>
             </div>
           </div>
