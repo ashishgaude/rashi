@@ -77,11 +77,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80vh;
-  height: 80vh;
+  width: 90vh;
+  height: 90vh;
   color: var(--gold-accent);
-  opacity: 0.08;
-  animation: rotateMandala 80s linear infinite;
+  opacity: 0.04; /* Very light and subtle */
+  animation: rotateMandala 120s linear infinite; /* Slower rotation for elegance */
   z-index: 0;
   pointer-events: none;
 }
@@ -89,6 +89,18 @@
 @keyframes rotateMandala {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.botanical-accents {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  pointer-events: none;
+  z-index: 5;
 }
 
 .hero-content {
@@ -106,12 +118,6 @@
   margin-bottom: 20px;
 }
 
-.botanical-header {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
 .wedding-of {
   font-family: var(--font-serif);
   font-style: italic;
@@ -121,11 +127,15 @@
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-family: var(--font-cursive);
+  font-size: clamp(4rem, 12vw, 8rem);
   color: var(--kunku-red);
   margin: 0;
-  line-height: 1.1;
-  text-shadow: 2px 2px 0px rgba(197, 160, 40, 0.1);
+  line-height: 1.2;
+  text-shadow: 1px 1px 2px rgba(197, 160, 40, 0.2);
+  font-weight: 400;
+  -webkit-text-stroke: 0.5px var(--kunku-red); /* Subtle bolding effect for thin script */
+  letter-spacing: 2px; /* Increased space between characters */
 }
 
 .hero-divider {
@@ -161,6 +171,85 @@
   letter-spacing: 3px;
   color: var(--forest-green);
   opacity: 0.8;
+  margin-bottom: 40px;
+}
+
+/* Refined Wedding Countdown Styles */
+.countdown-container {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 40px;
+  padding: 25px 40px;
+  background: rgba(255, 253, 208, 0.4);
+  border: 1px solid rgba(197, 160, 40, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(197, 160, 40, 0.05);
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 65px;
+}
+
+.countdown-value {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  color: var(--kunku-red);
+  line-height: 1;
+  font-weight: 500;
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
+}
+
+.countdown-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--gold-accent);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.countdown-divider {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--gold-accent);
+  opacity: 0.5;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .countdown-container {
+    max-width: 320px;
+    padding: 15px 20px;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .countdown-item {
+    min-width: 45px;
+  }
+
+  .countdown-value {
+    font-size: 1.8rem;
+  }
+
+  .countdown-label {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+    margin-top: 6px;
+  }
+
+  .countdown-divider {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+  }
 }
 
 /* Section Transitions */
@@ -229,6 +318,13 @@ section.is-visible {
   margin-bottom: 8px;
 }
 
+.ampm {
+  font-size: 0.6em;
+  letter-spacing: 1px;
+  vertical-align: baseline;
+  margin-left: 2px;
+}
+
 .event-name {
   font-size: 2.2rem;
   font-family: var(--font-serif);
@@ -267,32 +363,54 @@ section.is-visible {
 }
 
 .venue-info {
-  margin-top: 40px;
-  padding-top: 40px;
-  border-top: 1px solid rgba(197, 160, 40, 0.2);
+  margin-top: 50px;
+  padding: 40px 20px;
+  background: rgba(197, 160, 40, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(197, 160, 40, 0.15);
+  position: relative;
 }
 
 .venue-label {
   text-transform: uppercase;
-  letter-spacing: 4px;
-  font-size: 0.8rem;
+  letter-spacing: 5px;
+  font-size: 0.85rem;
   color: var(--gold-accent);
-  margin-bottom: 15px;
-  font-weight: 600;
+  margin-bottom: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.venue-label::before,
+.venue-label::after {
+  content: "";
+  width: 20px;
+  height: 1px;
+  background: var(--gold-accent);
+  opacity: 0.5;
 }
 
 .venue-name {
   font-family: var(--font-serif);
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   color: var(--kunku-red);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 .venue-address {
-  font-size: 0.95rem;
-  color: var(--forest-green);
-  font-style: italic;
-  margin-bottom: 30px;
+  font-size: 1.1rem;
+  color: var(--text-main);
+  margin-bottom: 35px;
+  line-height: 1.6;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
 }
 
 .map-button {
@@ -332,7 +450,20 @@ section.is-visible {
   opacity: 0.3;
 }
 
-/* Media Queries for Mobile Friendliness */
+.couple-names {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.ampersand {
+  font-family: var(--font-serif);
+  color: var(--gold-accent);
+  font-style: italic;
+  font-size: 0.5em;
+  opacity: 0.8;
+}
+
 @media (max-width: 768px) {
   .hero {
     padding: 20px;
@@ -351,21 +482,23 @@ section.is-visible {
     height: 50px;
   }
 
-  .botanical-header {
-    gap: 10px;
-    margin-bottom: 15px;
-  }
-
-  .botanical-header svg {
-    width: 40px !important;
-  }
-
   .wedding-of {
     font-size: 1.1rem;
   }
 
+  .couple-names {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .ampersand {
+    margin: 10px 0;
+    font-size: 0.4em;
+  }
+
   .hero h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
+    line-height: 1.2;
     letter-spacing: 2px;
   }
 
@@ -414,7 +547,12 @@ section.is-visible {
   }
 
   .venue-name {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
+  }
+
+  .venue-address {
+    font-size: 1rem;
+    padding: 0 10px;
   }
 
   .map-button {

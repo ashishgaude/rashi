@@ -8,6 +8,7 @@
   
   --font-serif: "Playfair Display", serif;
   --font-sans: "Montserrat", sans-serif;
+  --font-cursive: "Pinyon Script", cursive;
 
   font-family: var(--font-sans);
   line-height: 1.6;
