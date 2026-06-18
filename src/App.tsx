@@ -34,6 +34,37 @@ const GaneshIcon = ({ className, style }: { className?: string, style?: React.CS
   </svg>
 )
 
+const Envelope = ({ onOpen, isOpened }: { onOpen: () => void, isOpened: boolean }) => (
+  <div className={`envelope-wrapper ${isOpened ? 'opened' : ''}`}>
+    <RosePetalShower />
+    <div className={`envelope ${isOpened ? 'opened' : ''}`} onClick={onOpen}>
+      <div className="envelope-ribbon"></div>
+      <div className="envelope-flap">
+        <div className="flap-inner">
+          <Mandala className="inner-mandala" />
+        </div>
+      </div>
+      <div className="envelope-paper">
+        <div className="to-label">For Our Family & Friends</div>
+      </div>
+      <div className="invitation-card-preview">
+        <GaneshIcon style={{ width: '80px', opacity: 0.6 }} />
+        <p style={{ fontSize: '2.5rem', marginTop: '20px', fontFamily: 'var(--font-cursive)' }}>Shubh Vivah</p>
+        <p style={{ fontSize: '1.2rem', opacity: 0.8, marginTop: '10px' }}>Ashish & Rupali</p>
+      </div>
+      <div className="wax-seal">
+        <GaneshIcon style={{ width: '45px', height: '45px' }} />
+      </div>
+      <div className="smudge-layer">
+        <div className="smudge-circle s1"></div>
+        <div className="smudge-circle s2"></div>
+        <div className="smudge-circle s3"></div>
+      </div>
+      <div className="envelope-instruction">Tap to Open Invitation</div>
+    </div>
+  </div>
+)
+
 const ArtisticMangoLeaf = ({ className, style }: { className?: string, style?: React.CSSProperties }) => (
   <svg className={className} style={style} viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path 
@@ -88,6 +119,41 @@ const AKSHATA_GRAINS = Array.from({ length: 100 }, (_, i) => ({
   height: 3 + Math.random() * 4,
   color: AKSHATA_COLORS[i % AKSHATA_COLORS.length]
 }));
+
+const RosePetalShower = () => {
+  const petals = Array.from({ length: 30 }, (_, i) => ({
+    id: i,
+    left: Math.random() * 100,
+    delay: Math.random() * 10,
+    duration: 10 + Math.random() * 15,
+    size: 15 + Math.random() * 20,
+    rotation: Math.random() * 360
+  }))
+
+  return (
+    <div className="petal-container" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 5, overflow: 'hidden' }}>
+      {petals.map(p => (
+        <div 
+          key={p.id} 
+          className="petal" 
+          style={{ 
+            position: 'absolute',
+            left: `${p.left}%`, 
+            top: '-50px',
+            backgroundColor: '#ff4d6d',
+            borderRadius: '50% 0 50% 50%',
+            opacity: 0.7,
+            animation: `petalFall ${p.duration}s linear infinite`,
+            animationDelay: `${p.delay}s`,
+            width: `${p.size}px`,
+            height: `${p.size * 0.8}px`,
+            transform: `rotate(${p.rotation}deg)`
+          }} 
+        />
+      ))}
+    </div>
+  )
+}
 
 const AkshataShower = () => {
   return (
@@ -145,22 +211,22 @@ const Countdown = () => {
     <div className="countdown-container reveal" style={{ animationDelay: '1.8s' }}>
       <div className="countdown-item">
         <span className="countdown-value">{timeLeft.days}</span>
-        <span className="countdown-label">दिवस</span>
+        <span className="countdown-label">Days</span>
       </div>
       <div className="countdown-divider">:</div>
       <div className="countdown-item">
         <span className="countdown-value">{String(timeLeft.hours).padStart(2, '0')}</span>
-        <span className="countdown-label">तास</span>
+        <span className="countdown-label">Hours</span>
       </div>
       <div className="countdown-divider">:</div>
       <div className="countdown-item">
         <span className="countdown-value">{String(timeLeft.minutes).padStart(2, '0')}</span>
-        <span className="countdown-label">मिनिटे</span>
+        <span className="countdown-label">Minutes</span>
       </div>
       <div className="countdown-divider">:</div>
       <div className="countdown-item">
         <span className="countdown-value">{String(timeLeft.seconds).padStart(2, '0')}</span>
-        <span className="countdown-label">सेकंद</span>
+        <span className="countdown-label">Seconds</span>
       </div>
     </div>
   )
@@ -168,6 +234,7 @@ const Countdown = () => {
 
 function App() {
   const [isVisible, setIsVisible] = useState<{ [key: string]: boolean }>({})
+  const [isOpened, setIsOpened] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -185,12 +252,14 @@ function App() {
     sections.forEach((section) => observer.observe(section))
 
     return () => sections.forEach((section) => observer.unobserve(section))
-  }, [])
+  }, [isOpened])
 
   return (
     <div className="app-container">
+      <Envelope onOpen={() => setIsOpened(true)} isOpened={isOpened} />
+      
       {/* Hero Section */}
-      <header className="hero reveal">
+      <header className={`hero reveal ${isOpened ? 'is-visible' : ''}`}>
         <div className="botanical-accents">
           <ArtisticMangoLeaf style={{ width: '40px', transform: 'rotate(-25deg)', opacity: 0.8 }} />
           <ArtisticMangoLeaf style={{ width: '40px', transform: 'rotate(25deg)', opacity: 0.8 }} />
@@ -206,7 +275,7 @@ function App() {
             <span>रूपाली</span>
           </h1>
           <div className="hero-divider reveal" style={{ animationDelay: '1.1s' }} />
-          <p className="date reveal" style={{ animationDelay: '1.2s' }}>शनिवार, २७ जून २०२६</p>
+          <p className="date reveal" style={{ animationDelay: '1.2s' }}>Saturday, 27 June 2026</p>
           <p className="sub-title reveal" style={{ animationDelay: '1.5s' }}>
             कायमच्या प्रवासाची एक मंगलमय सुरुवात
           </p>
